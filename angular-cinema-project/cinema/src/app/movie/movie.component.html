@@ -1,9 +1,26 @@
-<section class="container-md">
+<section class="container-md bg-rgb(53,53,50) border-radius:12px">
   <form #mForm="ngForm">
     <div class="form-group">
       <label class="text-warning" for="title">Movie Title:</label>
       <input id="title" type="text" class="form-control"
-        required pattern="" name="title" [(ngModel)]="movie.title">
+        required pattern="[A-Űa-ű ]{5,25}" name="title" [(ngModel)]="movie.title">
+
+      <label class="text-warning" for="year">Release year:</label>
+      <input id="year" type="text" class="form-control"
+        required pattern="[1900-2021]" name="year" [(ngModel)]="movie.year">
+      
+      <label class="text-warning" for="category">Category:</label>
+      <select id="category" type="select" class="form-control"
+        required name="category" [(ngModel)]="movie.category">
+        <option value="Drama">Drama</option>
+        <option value="Action">Action</option>
+        <option value="Fantasy">Fantasy</option>
+        </select>
+    </div>
+    <div>
+      <button [disabled]="mForm.invalid" class="btn btn-warning btn-block mt-2">
+        <i>Fill all field to save!</i>
+      </button>
     </div>
     <div class="row">
       <div class="form-group col-6">
